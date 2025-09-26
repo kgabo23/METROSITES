@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetroSites — Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0066cc, #000);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .logo img {
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .contact {
+      font-size: 0.95rem;
+    }
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <!-- Replace with your actual logo path -->
+    <img src="https://metrosites.co.za/assets/bud.jpeg" alt="MetroSites Logo">
+  </div>
+  <h1>Coming Soon</h1>
+  <p>We’re building something amazing. Stay tuned!</p>
+
+  <div class="countdown" id="countdown">12:00:00</div>
+
+  <div class="contact">
+    📧 <a href="mailto:info@metrosites.co.za">info@metrosites.co.za</a> <br>
+    📞 <a href="tel:+27813186838">081 318 6838</a>
+  </div>
+
+  <script>
+    // Set the countdown target (12 hours from page load)
+    const targetTime = new Date().getTime() + (12 * 60 * 60 * 1000);
+
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetTime - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = "Launching Soon 🚀";
+      } else {
+        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+        const seconds = Math.floor((distance / 1000) % 60);
+
+        countdownEl.innerHTML =
+          (hours < 10 ? "0" : "") + hours + ":" +
+          (minutes < 10 ? "0" : "") + minutes + ":" +
+          (seconds < 10 ? "0" : "") + seconds;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
